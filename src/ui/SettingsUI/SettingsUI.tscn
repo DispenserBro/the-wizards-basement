@@ -1,0 +1,268 @@
+[gd_scene load_steps=11 format=3 uid="uid://dsettingsui"]
+
+[ext_resource type="FontFile" uid="uid://bacn3veci3ox7" path="res://fonts/ithaca-font/Ithaca-LVB75.ttf" id="1_font"]
+[ext_resource type="Texture2D" uid="uid://cikuen7glyuyy" path="res://external/fantasy_pixelart_ui/buttons/wood_button_normal.png" id="2_wood_normal"]
+[ext_resource type="Texture2D" uid="uid://dc0kj31o0rcn3" path="res://external/UIIcons_1/UIIcons_1 (1).png" id="3_icons"]
+[ext_resource type="Texture2D" uid="uid://c4juc0gifoenq" path="res://external/fantasy_pixelart_ui/buttons/wood_button_pressed.png" id="4_wood_pressed"]
+[ext_resource type="Texture2D" uid="uid://nxuysdtq7507" path="res://external/fantasy_pixelart_ui/buttons/silver_button_normal.png" id="5_silver_normal"]
+[ext_resource type="Texture2D" uid="uid://v66nu8jldcst" path="res://external/UIIcons_1/UIIcons_1 (3).png" id="6_pressed"]
+[ext_resource type="Script" path="res://src/ui/SettingsUI/SettingsUI.gd" id="7_script"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bg"]
+texture = ExtResource("2_wood_normal")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_close"]
+atlas = ExtResource("3_icons")
+region = Rect2(96, 32, 16, 16)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_inner_bg"]
+bg_color = Color(0.12, 0.08, 0.06, 0.4)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.24, 0.16, 0.12, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_overlay"]
+bg_color = Color(0, 0, 0, 0.54902)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dialog"]
+texture = ExtResource("2_wood_normal")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_danger_normal"]
+texture = ExtResource("5_silver_normal")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+modulate_color = Color(1, 0.3, 0.3, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_danger_hover"]
+texture = ExtResource("5_silver_normal")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+modulate_color = Color(1, 0.5, 0.5, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_danger_pressed"]
+texture = ExtResource("5_silver_normal")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+modulate_color = Color(0.7, 0.1, 0.1, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_btn_normal"]
+texture = ExtResource("2_wood_normal")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_btn_hover"]
+texture = ExtResource("2_wood_normal")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+modulate_color = Color(1.15, 1.15, 1.15, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_btn_pressed"]
+texture = ExtResource("4_wood_pressed")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_focus"]
+
+[node name="SettingsUI" type="PanelContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(660, 500)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_bg")
+script = ExtResource("7_script")
+
+[node name="MainLayout" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="HeaderLayout" type="HBoxContainer" parent="MainLayout"]
+layout_mode = 2
+
+[node name="LeftSpacer" type="Control" parent="MainLayout/HeaderLayout"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="MainLayout/HeaderLayout"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.960784, 0.870588, 0.701961, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 26
+text = "НАСТРОЙКИ"
+horizontal_alignment = 1
+
+[node name="CloseButton" type="TextureButton" parent="MainLayout/HeaderLayout"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_close")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="ContentVBox" type="VBoxContainer" parent="MainLayout"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+
+[node name="InnerPanel" type="PanelContainer" parent="MainLayout/ContentVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_inner_bg")
+
+[node name="Scroll" type="ScrollContainer" parent="MainLayout/ContentVBox/InnerPanel"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="Margin" type="MarginContainer" parent="MainLayout/ContentVBox/InnerPanel/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="ScrollVBox" type="VBoxContainer" parent="MainLayout/ContentVBox/InnerPanel/Scroll/Margin"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+
+[node name="Grid" type="GridContainer" parent="MainLayout/ContentVBox/InnerPanel/Scroll/Margin/ScrollVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 24
+theme_override_constants/v_separation = 16
+columns = 2
+
+[node name="Divider" type="HSeparator" parent="MainLayout/ContentVBox/InnerPanel/Scroll/Margin/ScrollVBox"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+
+[node name="ResetBtn" type="Button" parent="MainLayout/ContentVBox/InnerPanel/Scroll/Margin/ScrollVBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.941176, 0.501961, 0.501961, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxTexture_danger_normal")
+theme_override_styles/hover = SubResource("StyleBoxTexture_danger_hover")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_danger_pressed")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_focus")
+text = "☠ Сбросить прогресс"
+
+[node name="SaveBtn" type="Button" parent="MainLayout/ContentVBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxTexture_btn_normal")
+theme_override_styles/hover = SubResource("StyleBoxTexture_btn_hover")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_btn_pressed")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_focus")
+text = "Сохранить настройки"
+
+[node name="ResetConfirmPanel" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_overlay")
+
+[node name="DialogBox" type="PanelContainer" parent="ResetConfirmPanel"]
+custom_minimum_size = Vector2(340, 180)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_dialog")
+
+[node name="ConfirmVBox" type="VBoxContainer" parent="ResetConfirmPanel/DialogBox"]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="WarnLabel" type="Label" parent="ResetConfirmPanel/DialogBox/ConfirmVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.270588, 0, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 20
+text = "Сбросить весь прогресс?"
+horizontal_alignment = 1
+
+[node name="WarnDesc" type="Label" parent="ResetConfirmPanel/DialogBox/ConfirmVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.827451, 0.827451, 0.827451, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 14
+text = "Уровень, золото, навыки и инвентарь \nбудут стерты. Вернуться нельзя."
+horizontal_alignment = 1
+
+[node name="ConfirmBtnRow" type="HBoxContainer" parent="ResetConfirmPanel/DialogBox/ConfirmVBox"]
+layout_mode = 2
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="YesBtn" type="Button" parent="ResetConfirmPanel/DialogBox/ConfirmVBox/ConfirmBtnRow"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxTexture_danger_normal")
+theme_override_styles/hover = SubResource("StyleBoxTexture_danger_hover")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_danger_pressed")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_focus")
+text = "Да, сбросить"
+
+[node name="NoBtn" type="Button" parent="ResetConfirmPanel/DialogBox/ConfirmVBox/ConfirmBtnRow"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxTexture_btn_normal")
+theme_override_styles/hover = SubResource("StyleBoxTexture_btn_hover")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_btn_pressed")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_focus")
+text = "Отмена"

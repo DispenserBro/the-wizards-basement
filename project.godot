@@ -1,0 +1,52 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="The Wizard's Basement"
+config/name_localized={
+"en_US": "The Wizard's Basement",
+"ru_RU": "Подвал чародея"
+}
+run/main_scene="uid://orlnn4qn5d24"
+config/features=PackedStringArray("4.7", "Forward Plus")
+config/icon="res://icon.svg"
+
+[autoload]
+
+GameAudioRuntime="*res://src/core/AudioManager/AudioManager.gd"
+BridgeManager="*res://src/core/BridgeManager.gd"
+
+[display]
+
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+window/per_pixel_transparency/allowed=true
+
+[dotnet]
+
+project/assembly_name="The Wizard-s Basement"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/breakable_2d_sprites/plugin.cfg", "res://addons/kanban_tasks/plugin.cfg", "res://addons/log/plugin.cfg")
+
+[internationalization]
+
+locale/locale_filter_mode=0
+
+[physics]
+
+3d/physics_engine="Jolt Physics"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
+rendering_device/driver.windows="d3d12"

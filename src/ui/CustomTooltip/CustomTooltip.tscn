@@ -1,0 +1,57 @@
+[gd_scene load_steps=5 format=3 uid="uid://dcustomtooltip"]
+
+[ext_resource type="FontFile" uid="uid://bacn3veci3ox7" path="res://fonts/ithaca-font/Ithaca-LVB75.ttf" id="1_font"]
+[ext_resource type="Texture2D" uid="uid://cikuen7glyuyy" path="res://external/fantasy_pixelart_ui/buttons/wood_button_normal.png" id="2_wood"]
+[ext_resource type="Script" path="res://src/ui/CustomTooltip/CustomTooltip.gd" id="3_script"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bg"]
+texture = ExtResource("2_wood")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+content_margin_left = 16.0
+content_margin_top = 10.0
+content_margin_right = 16.0
+content_margin_bottom = 10.0
+
+[node name="CustomTooltip" type="PanelContainer"]
+texture_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxTexture_bg")
+script = ExtResource("3_script")
+
+[node name="Layout" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="TooltipLabel" type="Label" parent="Layout"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+text = "Tooltip Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TooltipDesc" type="Label" parent="Layout"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.941176, 0.901961, 0.54902, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 14
+text = "Tooltip Description"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TooltipTime" type="Label" parent="Layout"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 14
+text = "Remaining Time"
+horizontal_alignment = 1
+vertical_alignment = 1

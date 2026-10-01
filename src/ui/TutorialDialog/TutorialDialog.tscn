@@ -1,0 +1,73 @@
+[gd_scene load_steps=5 format=3 uid="uid://dtutorialdialog"]
+
+[ext_resource type="FontFile" uid="uid://bacn3veci3ox7" path="res://fonts/ithaca-font/Ithaca-LVB75.ttf" id="1_font"]
+[ext_resource type="Texture2D" uid="uid://cikuen7glyuyy" path="res://external/fantasy_pixelart_ui/buttons/wood_button_normal.png" id="2_wood"]
+[ext_resource type="Script" path="res://src/ui/TutorialDialog/TutorialDialog.gd" id="3_script"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg"]
+bg_color = Color(0.12, 0.08, 0.15, 0.95)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.6, 0.4, 0.8, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+content_margin_left = 14.0
+content_margin_top = 10.0
+content_margin_right = 14.0
+content_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_next_btn"]
+texture = ExtResource("2_wood")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+
+[node name="TutorialDialog" type="PanelContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(420, 180)
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_bg")
+script = ExtResource("3_script")
+
+[node name="VBox" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="DialogName" type="Label" parent="VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 0.9, 0.9, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 22
+text = "Дух Мастера Альдебарана"
+
+[node name="DialogText" type="Label" parent="VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(390, 80)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.960784, 0.870588, 0.701961, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 19
+text = "Приветствую тебя, ученик..."
+autowrap_mode = 3
+
+[node name="NextButton" type="Button" parent="VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxTexture_next_btn")
+theme_override_styles/hover = SubResource("StyleBoxTexture_next_btn")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_next_btn")
+text = "Далее >>"

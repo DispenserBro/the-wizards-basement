@@ -1,0 +1,162 @@
+[gd_scene format=3 uid="uid://orlnn4qn5d24"]
+
+[ext_resource type="Texture2D" uid="uid://cq40uqa2lipqr" path="res://external/Backgrounds/background 20/1.png" id="1_1bg10"]
+[ext_resource type="Texture2D" uid="uid://bxftgknee84wu" path="res://external/Backgrounds/background 20/2.png" id="2_cbw1n"]
+[ext_resource type="Texture2D" uid="uid://kkco7y61ioa2" path="res://external/Backgrounds/background 11/5.png" id="3_6ekv6"]
+[ext_resource type="Texture2D" uid="uid://h303nerb7i1m" path="res://external/Backgrounds/background 11/4.png" id="4_b83k2"]
+[ext_resource type="Texture2D" uid="uid://cqlqkjwg1hcg" path="res://external/Backgrounds/background 20/3.png" id="5_rh4h2"]
+[ext_resource type="FontFile" uid="uid://bacn3veci3ox7" path="res://fonts/ithaca-font/Ithaca-LVB75.ttf" id="6_ithaca"]
+[ext_resource type="FontFile" uid="uid://bd5tr2ook0kk6" path="res://fonts/tiny5-font/Tiny5-Regular.ttf" id="7_tiny5"]
+[ext_resource type="Texture2D" uid="uid://cikuen7glyuyy" path="res://external/fantasy_pixelart_ui/buttons/wood_button_normal.png" id="8_wood_normal"]
+[ext_resource type="Texture2D" uid="uid://c4juc0gifoenq" path="res://external/fantasy_pixelart_ui/buttons/wood_button_pressed.png" id="9_wood_pressed"]
+[ext_resource type="Script" uid="uid://cut3vv8vl5161" path="res://src/scenes/MainMenu/MainMenu.gd" id="10_script"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_normal"]
+texture = ExtResource("8_wood_normal")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pressed"]
+texture = ExtResource("9_wood_pressed")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[node name="MainMenu" type="Node2D" unique_id=753338500]
+script = ExtResource("10_script")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1436531660]
+texture_filter = 1
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("1_1bg10")
+
+[node name="Clouds" type="Node" parent="Background" unique_id=200835167]
+
+[node name="BackClouds" type="Node" parent="Background/Clouds" unique_id=1229294986]
+
+[node name="MiddleClouds" type="Node" parent="Background/Clouds" unique_id=1967306899]
+
+[node name="StaticCloud" type="TextureRect" parent="Background/Clouds/MiddleClouds" unique_id=881495675]
+texture_filter = 1
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("2_cbw1n")
+
+[node name="Cloud_1" type="TextureRect" parent="Background/Clouds/MiddleClouds" unique_id=1155840572]
+texture_filter = 1
+offset_left = 576.0
+offset_right = 1152.0
+offset_bottom = 324.0
+texture = ExtResource("3_6ekv6")
+
+[node name="Cloud_2" type="TextureRect" parent="Background/Clouds/MiddleClouds" unique_id=221894533]
+texture_filter = 1
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("4_b83k2")
+
+[node name="FrontClouds" type="TextureRect" parent="Background/Clouds" unique_id=704714232]
+texture_filter = 1
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("5_rh4h2")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1417936863]
+
+[node name="TitleBackground" type="NinePatchRect" parent="UI" unique_id=946935258]
+texture_filter = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -280.0
+offset_top = 80.0
+offset_right = 280.0
+offset_bottom = 180.0
+grow_horizontal = 2
+texture = ExtResource("8_wood_normal")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="TitleLabel" type="Label" parent="UI/TitleBackground" unique_id=1945157288]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.5)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_fonts/font = ExtResource("6_ithaca")
+theme_override_font_sizes/font_size = 64
+text = "The Wizard's Basement"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonsContainer" type="VBoxContainer" parent="UI" unique_id=2037657568]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -20.0
+offset_right = 150.0
+offset_bottom = 220.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="StartButton" type="Button" parent="UI/ButtonsContainer" unique_id=2122980794]
+texture_filter = 1
+custom_minimum_size = Vector2(240, 60)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.901961, 0.85098, 0.74902, 1)
+theme_override_colors/font_focus_color = Color(0.901961, 0.85098, 0.74902, 1)
+theme_override_colors/font_pressed_color = Color(0.901961, 0.85098, 0.74902, 1)
+theme_override_colors/font_hover_color = Color(1, 0.94902, 0.85098, 1)
+theme_override_fonts/font = ExtResource("7_tiny5")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxTexture_normal")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_pressed")
+theme_override_styles/hover = SubResource("StyleBoxTexture_normal")
+theme_override_styles/focus = SubResource("StyleBoxTexture_normal")
+text = "Начать игру"
+
+[node name="SettingsButton" type="Button" parent="UI/ButtonsContainer" unique_id=1569640426]
+texture_filter = 1
+custom_minimum_size = Vector2(240, 60)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.901961, 0.85098, 0.74902, 1)
+theme_override_colors/font_focus_color = Color(0.901961, 0.85098, 0.74902, 1)
+theme_override_colors/font_pressed_color = Color(0.901961, 0.85098, 0.74902, 1)
+theme_override_colors/font_hover_color = Color(1, 0.94902, 0.85098, 1)
+theme_override_fonts/font = ExtResource("7_tiny5")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxTexture_normal")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_pressed")
+theme_override_styles/hover = SubResource("StyleBoxTexture_normal")
+theme_override_styles/focus = SubResource("StyleBoxTexture_normal")
+text = "Настройки"
+
+[node name="ExitButton" type="Button" parent="UI/ButtonsContainer" unique_id=786753605]
+texture_filter = 1
+custom_minimum_size = Vector2(240, 60)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.901961, 0.85098, 0.74902, 1)
+theme_override_colors/font_focus_color = Color(0.901961, 0.85098, 0.74902, 1)
+theme_override_colors/font_pressed_color = Color(0.901961, 0.85098, 0.74902, 1)
+theme_override_colors/font_hover_color = Color(1, 0.94902, 0.85098, 1)
+theme_override_fonts/font = ExtResource("7_tiny5")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxTexture_normal")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_pressed")
+theme_override_styles/hover = SubResource("StyleBoxTexture_normal")
+theme_override_styles/focus = SubResource("StyleBoxTexture_normal")
+text = "Выйти"

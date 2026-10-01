@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cvw1l8qd0i85r"]
+
+[ext_resource type="Texture2D" uid="uid://c78ufbequy6ji" path="res://external/FreeContent/FreeContent/TPose_Character01_3.png" id="1_bvdwg"]
+
+[resource]
+resource_name = "DungeonCrawler_Character_002_9_R_Arm_4_palette1"
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.9063318, 0.9063318, 0.9063318, 0.8)
+albedo_texture = ExtResource("1_bvdwg")
+emission_enabled = true

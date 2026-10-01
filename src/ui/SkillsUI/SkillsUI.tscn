@@ -1,0 +1,174 @@
+[gd_scene load_steps=9 format=3 uid="uid://dskillsui"]
+
+[ext_resource type="FontFile" uid="uid://bacn3veci3ox7" path="res://fonts/ithaca-font/Ithaca-LVB75.ttf" id="1_font"]
+[ext_resource type="Texture2D" uid="uid://cikuen7glyuyy" path="res://external/fantasy_pixelart_ui/buttons/wood_button_normal.png" id="2_wood_normal"]
+[ext_resource type="Texture2D" uid="uid://dc0kj31o0rcn3" path="res://external/UIIcons_1/UIIcons_1 (1).png" id="3_icons"]
+[ext_resource type="Script" path="res://src/ui/SkillsUI/SkillsUI.gd" id="4_script"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bg"]
+texture = ExtResource("2_wood_normal")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_close"]
+atlas = ExtResource("3_icons")
+region = Rect2(96, 32, 16, 16)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_inner_bg"]
+bg_color = Color(0.12, 0.08, 0.06, 0.4)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.24, 0.16, 0.12, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_sep"]
+color = Color(0.4, 0.3, 0.2, 1)
+content_margin_top = 2.0
+content_margin_bottom = 2.0
+
+[node name="SkillsUI" type="PanelContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(660, 500)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_bg")
+script = ExtResource("4_script")
+
+[node name="MainLayout" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="HeaderLayout" type="HBoxContainer" parent="MainLayout"]
+layout_mode = 2
+
+[node name="LeftSpacer" type="Control" parent="MainLayout/HeaderLayout"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="MainLayout/HeaderLayout"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.960784, 0.870588, 0.701961, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 26
+text = "НАВЫКИ"
+horizontal_alignment = 1
+
+[node name="CloseButton" type="TextureButton" parent="MainLayout/HeaderLayout"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_close")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="SPLabel" type="Label" parent="MainLayout"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.843137, 0, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+text = "Очки навыков: 0"
+horizontal_alignment = 1
+
+[node name="ContentVBox" type="VBoxContainer" parent="MainLayout"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+
+[node name="InnerPanel" type="PanelContainer" parent="MainLayout/ContentVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_inner_bg")
+
+[node name="Scroll" type="ScrollContainer" parent="MainLayout/ContentVBox/InnerPanel"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Margin" type="MarginContainer" parent="MainLayout/ContentVBox/InnerPanel/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="TooltipPanel" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+z_index = 5
+custom_minimum_size = Vector2(320, 150)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_bg")
+
+[node name="TooltipVBox" type="VBoxContainer" parent="TooltipPanel"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="TooltipTitle" type="Label" parent="TooltipPanel/TooltipVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.960784, 0.870588, 0.701961, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+text = "Skill Title"
+
+[node name="TooltipLevel" type="Label" parent="TooltipPanel/TooltipVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.564706, 0.933333, 0.564706, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 16
+text = "Level 0/5"
+
+[node name="TooltipCost" type="Label" parent="TooltipPanel/TooltipVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.843137, 0, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 16
+text = "Стоимость: 1 SP"
+
+[node name="Sep1" type="HSeparator" parent="TooltipPanel/TooltipVBox"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_sep")
+
+[node name="TooltipDesc" type="Label" parent="TooltipPanel/TooltipVBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.827451, 0.827451, 0.827451, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 16
+text = "Skill description goes here..."
+autowrap_mode = 3
+
+[node name="TooltipSeparator" type="HSeparator" parent="TooltipPanel/TooltipVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_sep")
+
+[node name="TooltipReqs" type="Label" parent="TooltipPanel/TooltipVBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.941176, 0.501961, 0.501961, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 15
+text = "Requirements: None"
+autowrap_mode = 3

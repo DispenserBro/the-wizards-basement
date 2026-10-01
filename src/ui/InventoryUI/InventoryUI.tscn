@@ -1,0 +1,130 @@
+[gd_scene load_steps=7 format=3 uid="uid://dinventoryui"]
+
+[ext_resource type="FontFile" uid="uid://bacn3veci3ox7" path="res://fonts/ithaca-font/Ithaca-LVB75.ttf" id="1_font"]
+[ext_resource type="Texture2D" uid="uid://cikuen7glyuyy" path="res://external/fantasy_pixelart_ui/buttons/wood_button_normal.png" id="2_wood_normal"]
+[ext_resource type="Texture2D" uid="uid://dc0kj31o0rcn3" path="res://external/UIIcons_1/UIIcons_1 (1).png" id="3_icons"]
+[ext_resource type="Texture2D" uid="uid://bkysepp70242d" path="res://external/UIIcons_1/UIIcons_1 (2).png" id="4_hover"]
+[ext_resource type="Texture2D" uid="uid://v66nu8jldcst" path="res://external/UIIcons_1/UIIcons_1 (3).png" id="5_pressed"]
+[ext_resource type="Script" path="res://src/ui/InventoryUI/InventoryUI.gd" id="6_script"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bg"]
+texture = ExtResource("2_wood_normal")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_close_normal"]
+atlas = ExtResource("3_icons")
+region = Rect2(96, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_close_hover"]
+atlas = ExtResource("4_hover")
+region = Rect2(96, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_close_pressed"]
+atlas = ExtResource("5_pressed")
+region = Rect2(96, 32, 16, 16)
+
+[node name="InventoryUI" type="PanelContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(660, 500)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_bg")
+script = ExtResource("6_script")
+
+[node name="MainLayout" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="HeaderLayout" type="HBoxContainer" parent="MainLayout"]
+layout_mode = 2
+
+[node name="LeftSpacer" type="Control" parent="MainLayout/HeaderLayout"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="MainLayout/HeaderLayout"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.960784, 0.870588, 0.701961, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 20
+text = "СНАРЯЖЕНИЕ И ИНВЕНТАРЬ"
+horizontal_alignment = 1
+
+[node name="CloseButton" type="TextureButton" parent="MainLayout/HeaderLayout"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_close_normal")
+texture_pressed = SubResource("AtlasTexture_close_pressed")
+texture_hover = SubResource("AtlasTexture_close_hover")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="PanelsLayout" type="BoxContainer" parent="MainLayout"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="EquipVBox" type="VBoxContainer" parent="MainLayout/PanelsLayout"]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+
+[node name="EquipTitle" type="Label" parent="MainLayout/PanelsLayout/EquipVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.941176, 0.901961, 0.54902, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 14
+text = "СНАРЯЖЕНИЕ"
+horizontal_alignment = 1
+
+[node name="EquipScroll" type="ScrollContainer" parent="MainLayout/PanelsLayout/EquipVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="EquipmentContainer" type="BoxContainer" parent="MainLayout/PanelsLayout/EquipVBox/EquipScroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+vertical = true
+
+[node name="InvVBox" type="VBoxContainer" parent="MainLayout/PanelsLayout"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="InvTitle" type="Label" parent="MainLayout/PanelsLayout/InvVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.941176, 0.901961, 0.54902, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 14
+text = "ИНВЕНТАРЬ"
+horizontal_alignment = 1
+
+[node name="InvScroll" type="ScrollContainer" parent="MainLayout/PanelsLayout/InvVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="CenterContainer" type="CenterContainer" parent="MainLayout/PanelsLayout/InvVBox/InvScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="InventoryGrid" type="GridContainer" parent="MainLayout/PanelsLayout/InvVBox/InvScroll/CenterContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_constants/h_separation = 4
+theme_override_constants/v_separation = 4
+columns = 6

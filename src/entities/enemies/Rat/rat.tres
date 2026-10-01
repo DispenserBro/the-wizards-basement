@@ -1,0 +1,6 @@
+[gd_resource type="AtlasTexture" format=3 uid="uid://b354hx2oh3uax"]
+
+[ext_resource type="Texture2D" uid="uid://db82sv175psvg" path="res://external/SGQ_Dungeon_v1_1_1/all_unclassified/rat.png" id="1_h2wu5"]
+
+[resource]
+atlas = ExtResource("1_h2wu5")

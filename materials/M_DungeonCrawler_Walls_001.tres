@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://ob5s2onas37l"]
+
+[ext_resource type="Texture2D" uid="uid://ds4m42nlck5da" path="res://external/FreeSample/Textures/4K/BAKE_Walls_DiffuseMap- 4K.png" id="1_48qvy"]
+
+[resource]
+resource_name = "M_DungeonCrawler_Walls_001"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_48qvy")
+emission_enabled = true
+emission_energy_multiplier = 0.0
+texture_filter = 2

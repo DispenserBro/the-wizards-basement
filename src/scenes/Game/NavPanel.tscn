@@ -1,0 +1,150 @@
+[gd_scene format=3 uid="uid://dnavpanel_hud"]
+
+[ext_resource type="Texture2D" uid="uid://cikuen7glyuyy" path="res://external/fantasy_pixelart_ui/buttons/wood_button_normal.png" id="1_bg"]
+[ext_resource type="Texture2D" uid="uid://dc0kj31o0rcn3" path="res://external/UIIcons_1/UIIcons_1 (1).png" id="2_icons"]
+[ext_resource type="Texture2D" uid="uid://bkysepp70242d" path="res://external/UIIcons_1/UIIcons_1 (2).png" id="3_hover"]
+[ext_resource type="Texture2D" uid="uid://v66nu8jldcst" path="res://external/UIIcons_1/UIIcons_1 (3).png" id="4_pressed"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_panel"]
+content_margin_left = 12.0
+content_margin_top = 10.0
+content_margin_right = 12.0
+content_margin_bottom = 10.0
+texture = ExtResource("1_bg")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_skills"]
+atlas = ExtResource("2_icons")
+region = Rect2(32, 128, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_skills_pressed"]
+atlas = ExtResource("4_pressed")
+region = Rect2(32, 128, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_skills_hover"]
+atlas = ExtResource("3_hover")
+region = Rect2(32, 128, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_upgrades"]
+atlas = ExtResource("2_icons")
+region = Rect2(48, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_upgrades_pressed"]
+atlas = ExtResource("4_pressed")
+region = Rect2(48, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_upgrades_hover"]
+atlas = ExtResource("3_hover")
+region = Rect2(48, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_equipment"]
+atlas = ExtResource("2_icons")
+region = Rect2(96, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_equipment_pressed"]
+atlas = ExtResource("4_pressed")
+region = Rect2(96, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_equipment_hover"]
+atlas = ExtResource("3_hover")
+region = Rect2(96, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_shop"]
+atlas = ExtResource("2_icons")
+region = Rect2(16, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_shop_pressed"]
+atlas = ExtResource("4_pressed")
+region = Rect2(16, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_shop_hover"]
+atlas = ExtResource("3_hover")
+region = Rect2(16, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_settings"]
+atlas = ExtResource("2_icons")
+region = Rect2(112, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_settings_pressed"]
+atlas = ExtResource("4_pressed")
+region = Rect2(112, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_settings_hover"]
+atlas = ExtResource("3_hover")
+region = Rect2(112, 96, 16, 16)
+
+[node name="NavPanel" type="PanelContainer"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = -20.0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_panel")
+
+[node name="HBox" type="HBoxContainer" parent="."]
+texture_filter = 1
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="SkillsButton" type="TextureButton" parent="HBox"]
+unique_name_in_owner = true
+texture_filter = 1
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_skills")
+texture_pressed = SubResource("AtlasTexture_skills_pressed")
+texture_hover = SubResource("AtlasTexture_skills_hover")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="UpgradesButton" type="TextureButton" parent="HBox"]
+unique_name_in_owner = true
+texture_filter = 1
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_upgrades")
+texture_pressed = SubResource("AtlasTexture_upgrades_pressed")
+texture_hover = SubResource("AtlasTexture_upgrades_hover")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="EquipmentButton" type="TextureButton" parent="HBox"]
+unique_name_in_owner = true
+texture_filter = 1
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_equipment")
+texture_pressed = SubResource("AtlasTexture_equipment_pressed")
+texture_hover = SubResource("AtlasTexture_equipment_hover")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="ShopButton" type="TextureButton" parent="HBox"]
+unique_name_in_owner = true
+texture_filter = 1
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_shop")
+texture_pressed = SubResource("AtlasTexture_shop_pressed")
+texture_hover = SubResource("AtlasTexture_shop_hover")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="SettingsButton" type="TextureButton" parent="HBox"]
+unique_name_in_owner = true
+texture_filter = 1
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_settings")
+texture_pressed = SubResource("AtlasTexture_settings_pressed")
+texture_hover = SubResource("AtlasTexture_settings_hover")
+ignore_texture_size = true
+stretch_mode = 5

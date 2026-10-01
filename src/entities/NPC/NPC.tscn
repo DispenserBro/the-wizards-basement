@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://8vsfokgobtrl"]
+
+[ext_resource type="Script" path="res://src/entities/NPC/NPC.gd" id="1_0cnqq"]
+[ext_resource type="Texture2D" uid="uid://bbfm80vq04dt2" path="res://src/entities/NPC/npc.png" id="1_8fmbf"]
+[ext_resource type="Texture2D" uid="uid://6w7sosys81f2" path="res://src/entities/NPC/!.png" id="2_5jy15"]
+[ext_resource type="PackedScene" uid="uid://cy5mh1h1rwxcm" path="res://src/entities/Conversation/Conversation.tscn" id="4_tsv5c"]
+[ext_resource type="Texture2D" uid="uid://bl4g340lfp0or" path="res://src/entities/Player/player.png" id="5_5xqfc"]
+[ext_resource type="FontFile" uid="uid://pahs7t74nq23" path="res://font/m5x7.ttf" id="6_pb75c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bc2he"]
+size = Vector2(84, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a7rs1"]
+atlas = ExtResource("2_5jy15")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l7yoj"]
+atlas = ExtResource("2_5jy15")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vaxjx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a7rs1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l7yoj")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 2.0
+}]
+
+[node name="npc" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_0cnqq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_8fmbf")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-57, -7)
+shape = SubResource("RectangleShape2D_bc2he")
+
+[node name="enter" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -37)
+sprite_frames = SubResource("SpriteFrames_vaxjx")
+animation = &"new_animation"
+autoplay = "new_animation"
+frame_progress = 0.49116
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="conversation" parent="CanvasLayer" instance=ExtResource("4_tsv5c")]
+visible = false
+word = PackedStringArray("Hello!", "who are you?", "my name is Bob.", "my name is MANSOUR.", "have a great day!")
+_name = PackedStringArray("???", "Mansour", "Bob", "Mansour", "Bob")
+_icon = [ExtResource("1_8fmbf"), ExtResource("5_5xqfc"), ExtResource("1_8fmbf"), ExtResource("5_5xqfc"), ExtResource("1_8fmbf")]
+
+[node name="note" type="ColorRect" parent="CanvasLayer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -134.0
+offset_top = 344.0
+offset_right = 134.0
+offset_bottom = 430.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.654902)
+
+[node name="label" type="Label" parent="CanvasLayer/note"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -104.5
+offset_top = -38.0
+offset_right = 104.5
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_pb75c")
+theme_override_font_sizes/font_size = 91
+text = "Talk [E]"

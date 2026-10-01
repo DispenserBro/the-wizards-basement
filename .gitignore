@@ -1,0 +1,26 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+
+# Agent configuration
+.agents/
+
+# Public snapshot: local-only data
+.env
+.env.*
+!.env.example
+.codex/
+.agents/
+.vscode/
+Library/
+Temp/
+Logs/
+UserSettings/
+Builds/
+.godot/
+.venv/
+__pycache__/
+node_modules/
+**/bin/
+**/obj/
+*.log

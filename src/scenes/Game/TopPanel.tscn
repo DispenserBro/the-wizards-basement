@@ -1,0 +1,151 @@
+[gd_scene format=3 uid="uid://ctoppanel_hud"]
+
+[ext_resource type="Texture2D" uid="uid://cikuen7glyuyy" path="res://external/fantasy_pixelart_ui/buttons/wood_button_normal.png" id="1_bg"]
+[ext_resource type="Texture2D" uid="uid://xhrr82kbr43d" path="res://external/fantasy_pixelart_ui/icons/gold_castle.png" id="2_castle"]
+[ext_resource type="FontFile" uid="uid://bd5tr2ook0kk6" path="res://fonts/tiny5-font/Tiny5-Regular.ttf" id="3_font"]
+[ext_resource type="Texture2D" uid="uid://do41edhoe2pe7" path="res://external/fantasy_pixelart_ui/icons/gold_star.png" id="4_star"]
+[ext_resource type="Texture2D" uid="uid://ct01rl3hghg8n" path="res://external/fantasy_pixelart_ui/icons/gold_anvil.png" id="5_anvil"]
+[ext_resource type="Texture2D" uid="uid://4w3rpgwx3ajk" path="res://external/fantasy_pixelart_ui/icons/gold_flag.png" id="6_flag"]
+[ext_resource type="Texture2D" uid="uid://btt8gji16jmf0" path="res://external/fantasy_pixelart_ui/icons/gold_sword.png" id="7_sword"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_panel"]
+content_margin_left = 12.0
+content_margin_top = 10.0
+content_margin_right = 12.0
+content_margin_bottom = 10.0
+texture = ExtResource("1_bg")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[node name="TopPanel" type="PanelContainer"]
+texture_filter = 1
+layout_mode = 1
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 20.0
+offset_bottom = 20.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_panel")
+
+[node name="HBox" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="ResourceVBox" type="VBoxContainer" parent="HBox"]
+layout_mode = 2
+
+[node name="ResourceRow" type="HBoxContainer" parent="HBox/ResourceVBox"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="LevelHBox" type="HBoxContainer" parent="HBox/ResourceVBox/ResourceRow"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="LevelIcon" type="TextureRect" parent="HBox/ResourceVBox/ResourceRow/LevelHBox"]
+texture_filter = 1
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("2_castle")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="LevelLabel" type="Label" parent="HBox/ResourceVBox/ResourceRow/LevelHBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.85, 0.75, 1)
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 22
+text = "Ур. 1"
+
+[node name="GoldHBox" type="HBoxContainer" parent="HBox/ResourceVBox/ResourceRow"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="GoldIcon" type="TextureRect" parent="HBox/ResourceVBox/ResourceRow/GoldHBox"]
+texture_filter = 1
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("4_star")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="GoldLabel" type="Label" parent="HBox/ResourceVBox/ResourceRow/GoldHBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.85, 0.75, 1)
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 22
+text = "0"
+
+[node name="XpHBox" type="HBoxContainer" parent="HBox/ResourceVBox/ResourceRow"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="XpIcon" type="TextureRect" parent="HBox/ResourceVBox/ResourceRow/XpHBox"]
+texture_filter = 1
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("5_anvil")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="XpLabel" type="Label" parent="HBox/ResourceVBox/ResourceRow/XpHBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.85, 0.75, 1)
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 22
+text = "0/100"
+
+[node name="WaveRow" type="HBoxContainer" parent="HBox/ResourceVBox"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="WaveHBox" type="HBoxContainer" parent="HBox/ResourceVBox/WaveRow"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="WaveIcon" type="TextureRect" parent="HBox/ResourceVBox/WaveRow/WaveHBox"]
+texture_filter = 1
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("6_flag")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="WaveLabel" type="Label" parent="HBox/ResourceVBox/WaveRow/WaveHBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.85, 0.75, 1)
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 22
+text = "Волна: 1"
+
+[node name="KillsHBox" type="HBoxContainer" parent="HBox/ResourceVBox/WaveRow"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="KillsIcon" type="TextureRect" parent="HBox/ResourceVBox/WaveRow/KillsHBox"]
+texture_filter = 1
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("7_sword")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="KillsLabel" type="Label" parent="HBox/ResourceVBox/WaveRow/KillsHBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.85, 0.75, 1)
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 22
+text = "Убито: 0"
+
+[node name="Separator" type="VSeparator" parent="HBox"]
+layout_mode = 2
+
+[node name="ActiveEffectsContainer" type="HBoxContainer" parent="HBox"]
+unique_name_in_owner = true
+layout_mode = 2

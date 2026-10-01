@@ -1,0 +1,297 @@
+[gd_scene load_steps=11 format=3 uid="uid://dshopui"]
+
+[ext_resource type="FontFile" uid="uid://bacn3veci3ox7" path="res://fonts/ithaca-font/Ithaca-LVB75.ttf" id="1_font"]
+[ext_resource type="Texture2D" uid="uid://cikuen7glyuyy" path="res://external/fantasy_pixelart_ui/buttons/wood_button_normal.png" id="2_wood_normal"]
+[ext_resource type="Texture2D" uid="uid://dc0kj31o0rcn3" path="res://external/UIIcons_1/UIIcons_1 (1).png" id="3_icons"]
+[ext_resource type="Texture2D" uid="uid://bkysepp70242d" path="res://external/UIIcons_1/UIIcons_1 (2).png" id="4_hover"]
+[ext_resource type="Texture2D" uid="uid://v66nu8jldcst" path="res://external/UIIcons_1/UIIcons_1 (3).png" id="5_pressed"]
+[ext_resource type="Texture2D" uid="uid://xhrr82kbr43d" path="res://external/fantasy_pixelart_ui/icons/gold_castle.png" id="6_gold_icon"]
+[ext_resource type="Script" path="res://src/ui/ShopUI/ShopUI.gd" id="7_script"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bg"]
+texture = ExtResource("2_wood_normal")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_close_normal"]
+atlas = ExtResource("3_icons")
+region = Rect2(96, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_close_hover"]
+atlas = ExtResource("4_hover")
+region = Rect2(96, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_close_pressed"]
+atlas = ExtResource("5_pressed")
+region = Rect2(96, 32, 16, 16)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_body_bg"]
+bg_color = Color(0.12, 0.08, 0.06, 0.4)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.24, 0.16, 0.12, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_overlay"]
+bg_color = Color(0, 0, 0, 0.54902)
+
+[node name="ShopUI" type="PanelContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(660, 500)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_bg")
+script = ExtResource("7_script")
+
+[node name="MainLayout" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="HeaderLayout" type="HBoxContainer" parent="MainLayout"]
+layout_mode = 2
+
+[node name="LeftSpacer" type="Control" parent="MainLayout/HeaderLayout"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="MainLayout/HeaderLayout"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.960784, 0.870588, 0.701961, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 20
+text = "ЛАВКА ВОЛШЕБНИКА"
+horizontal_alignment = 1
+
+[node name="CloseButton" type="TextureButton" parent="MainLayout/HeaderLayout"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_close_normal")
+texture_pressed = SubResource("AtlasTexture_close_pressed")
+texture_hover = SubResource("AtlasTexture_close_hover")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="GoldLayout" type="HBoxContainer" parent="MainLayout"]
+layout_mode = 2
+alignment = 1
+
+[node name="CoinIcon" type="TextureRect" parent="MainLayout/GoldLayout"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+texture = ExtResource("6_gold_icon")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="GoldLabel" type="Label" parent="MainLayout/GoldLayout"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.843137, 0, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 16
+text = "0 Золото"
+
+[node name="TabsRow" type="GridContainer" parent="MainLayout"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 4
+columns = 4
+
+[node name="BodyPanel" type="PanelContainer" parent="MainLayout"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_body_bg")
+
+[node name="SellTab" type="VBoxContainer" parent="MainLayout/BodyPanel"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="SellScroll" type="ScrollContainer" parent="MainLayout/BodyPanel/SellTab"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="CenterContainer" type="CenterContainer" parent="MainLayout/BodyPanel/SellTab/SellScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="SellGrid" type="GridContainer" parent="MainLayout/BodyPanel/SellTab/SellScroll/CenterContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+columns = 6
+
+[node name="SellAllBtn" type="Button" parent="MainLayout/BodyPanel/SellTab"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 14
+text = "Продать все материалы"
+
+[node name="EquipTab" type="VBoxContainer" parent="MainLayout/BodyPanel"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="TimerRow" type="HBoxContainer" parent="MainLayout/BodyPanel/EquipTab"]
+layout_mode = 2
+alignment = 1
+
+[node name="RotationTimerLabel" type="Label" parent="MainLayout/BodyPanel/EquipTab/TimerRow"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.941176, 0.901961, 0.54902, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 14
+text = "Обновление через: --:--"
+
+[node name="RefreshEquipBtn" type="Button" parent="MainLayout/BodyPanel/EquipTab/TimerRow"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 12
+text = "Обновить (50 Зол.)"
+
+[node name="EquipScroll" type="ScrollContainer" parent="MainLayout/BodyPanel/EquipTab"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="EquipContainer" type="GridContainer" parent="MainLayout/BodyPanel/EquipTab/EquipScroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+columns = 4
+
+[node name="BoostsTab" type="VBoxContainer" parent="MainLayout/BodyPanel"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="BoostsScroll" type="ScrollContainer" parent="MainLayout/BodyPanel/BoostsTab"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="Margin" type="MarginContainer" parent="MainLayout/BodyPanel/BoostsTab/BoostsScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="BoostsContainer" type="VBoxContainer" parent="MainLayout/BodyPanel/BoostsTab/BoostsScroll/Margin"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="WorkshopTab" type="VBoxContainer" parent="MainLayout/BodyPanel"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="WorkshopScroll" type="ScrollContainer" parent="MainLayout/BodyPanel/WorkshopTab"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="Margin" type="MarginContainer" parent="MainLayout/BodyPanel/WorkshopTab/WorkshopScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="WorkshopUpgradesContainer" type="VBoxContainer" parent="MainLayout/BodyPanel/WorkshopTab/WorkshopScroll/Margin"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="ConfirmOverlay" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_overlay")
+
+[node name="DialogBox" type="PanelContainer" parent="ConfirmOverlay"]
+custom_minimum_size = Vector2(340, 180)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_bg")
+
+[node name="ConfirmVBox" type="VBoxContainer" parent="ConfirmOverlay/DialogBox"]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="ConfirmLabel" type="Label" parent="ConfirmOverlay/DialogBox/ConfirmVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.270588, 0, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 20
+text = "Продать снаряжение?"
+horizontal_alignment = 1
+
+[node name="ConfirmDesc" type="Label" parent="ConfirmOverlay/DialogBox/ConfirmVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.827451, 0.827451, 0.827451, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 14
+text = "Вы собираетесь продать редкий предмет. \nЭто действие нельзя отменить."
+horizontal_alignment = 1
+
+[node name="ConfirmBtnRow" type="HBoxContainer" parent="ConfirmOverlay/DialogBox/ConfirmVBox"]
+layout_mode = 2
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="ConfirmYesBtn" type="Button" parent="ConfirmOverlay/DialogBox/ConfirmVBox/ConfirmBtnRow"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 16
+text = "Да, продать"
+
+[node name="ConfirmNoBtn" type="Button" parent="ConfirmOverlay/DialogBox/ConfirmVBox/ConfirmBtnRow"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 16
+text = "Отмена"

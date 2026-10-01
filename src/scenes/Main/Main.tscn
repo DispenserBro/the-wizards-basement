@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://qov0yqcib7mx"]
+
+[ext_resource type="PackedScene" uid="uid://c6a8p1p8p8w2y" path="res://src/entities/Player/Player.tscn" id="1_2ryec"]
+[ext_resource type="PackedScene" uid="uid://8vsfokgobtrl" path="res://src/entities/NPC/NPC.tscn" id="1_35b7k"]
+[ext_resource type="Texture2D" uid="uid://c2ulawpi54yti" path="res://src/tiles/ground.png" id="2_qbxcq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pa8xx"]
+size = Vector2(384, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xgf18"]
+size = Vector2(242, 16)
+
+[node name="main" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(12, -160)
+zoom = Vector2(2.5, 2.5)
+
+[node name="player" parent="." instance=ExtResource("1_2ryec")]
+z_index = 1
+position = Vector2(0, -38)
+
+[node name="npc" parent="." node_paths=PackedStringArray("player") instance=ExtResource("1_35b7k")]
+position = Vector2(312, -94)
+player = NodePath("../player")
+
+[node name="enviorment" type="Node" parent="."]
+
+[node name="ground" type="StaticBody2D" parent="enviorment"]
+
+[node name="Sprite2D" type="Sprite2D" parent="enviorment/ground"]
+scale = Vector2(12, 1)
+texture = ExtResource("2_qbxcq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enviorment/ground"]
+shape = SubResource("RectangleShape2D_pa8xx")
+
+[node name="ground2" type="StaticBody2D" parent="enviorment"]
+position = Vector2(253, -70)
+
+[node name="Sprite2D" type="Sprite2D" parent="enviorment/ground2"]
+scale = Vector2(7.5625, 0.5)
+texture = ExtResource("2_qbxcq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enviorment/ground2"]
+shape = SubResource("RectangleShape2D_xgf18")
+
+[node name="ground3" type="StaticBody2D" parent="enviorment"]
+position = Vector2(-189, -123)
+
+[node name="Sprite2D" type="Sprite2D" parent="enviorment/ground3"]
+scale = Vector2(7.5625, 0.5)
+texture = ExtResource("2_qbxcq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enviorment/ground3"]
+shape = SubResource("RectangleShape2D_xgf18")
+
+[node name="Label" type="Label" parent="enviorment"]
+offset_left = -294.0
+offset_top = -296.0
+offset_right = 174.0
+offset_bottom = -229.0
+theme_override_colors/font_color = Color(0.0941176, 0.0901961, 0.0745098, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 46
+text = "Conversation System"

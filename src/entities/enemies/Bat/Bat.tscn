@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://dljrqsik5pe4w"]
+
+[ext_resource type="Script" path="res://src/entities/enemies/Bat/Bat.gd" id="1_spe2j"]
+[ext_resource type="SpriteFrames" uid="uid://bsc7hl0c4x4oj" path="res://src/entities/enemies/Bat/bat_animations.tres" id="2_spe2j"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oe35l"]
+radius = 6.0
+
+[node name="Bat" type="CharacterBody2D" unique_id=1269248396]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_spe2j")
+MaxHealth = 8
+Health = 8
+Defense = 1
+GoldMax = 3
+ExperienceDrop = 8
+PatrolSpeed = 60.0
+
+[node name="sprite" type="AnimatedSprite2D" parent="." unique_id=67682839]
+z_index = 100
+texture_filter = 1
+sprite_frames = ExtResource("2_spe2j")
+animation = &"walk_right"
+autoplay = "walk_right"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=338913093]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_oe35l")

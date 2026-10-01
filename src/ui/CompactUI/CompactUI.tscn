@@ -1,0 +1,281 @@
+[gd_scene load_steps=11 format=3 uid="uid://dcompactui"]
+
+[ext_resource type="FontFile" uid="uid://bacn3veci3ox7" path="res://fonts/ithaca-font/Ithaca-LVB75.ttf" id="1_font"]
+[ext_resource type="Texture2D" uid="uid://cikuen7glyuyy" path="res://external/fantasy_pixelart_ui/buttons/wood_button_normal.png" id="2_wood_normal"]
+[ext_resource type="Texture2D" uid="uid://c4juc0gifoenq" path="res://external/fantasy_pixelart_ui/buttons/wood_button_pressed.png" id="3_wood_pressed"]
+[ext_resource type="Script" path="res://src/ui/CompactUI/CompactUI.gd" id="4_script"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_panel"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_root"]
+content_margin_left = 4.0
+content_margin_top = 3.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_stats"]
+content_margin_left = 6.0
+content_margin_top = 4.0
+content_margin_right = 6.0
+content_margin_bottom = 5.0
+bg_color = Color(0.105882, 0.0509804, 0.0352941, 0.9)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.45, 0.27, 0.18, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_btn_normal"]
+texture = ExtResource("2_wood_normal")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_btn_hover"]
+texture = ExtResource("2_wood_normal")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+modulate_color = Color(1.15, 1.15, 1.15, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_btn_pressed"]
+texture = ExtResource("3_wood_pressed")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_focus"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hp_fill"]
+bg_color = Color(0, 0.5, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hp_bg"]
+bg_color = Color(0.5, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_summon_fill"]
+bg_color = Color(0.721569, 0.52549, 0.0431373, 1)
+
+[node name="CompactUI" type="PanelContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(320, 320)
+theme_override_styles/panel = SubResource("StyleBoxEmpty_root")
+script = ExtResource("4_script")
+
+[node name="MainVBox" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="HeaderPanel" type="PanelContainer" parent="MainVBox"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_panel")
+
+[node name="Header" type="HBoxContainer" parent="MainVBox/HeaderPanel"]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 2
+
+[node name="RestoreButton" type="Button" parent="MainVBox/HeaderPanel/Header"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxTexture_btn_normal")
+theme_override_styles/hover = SubResource("StyleBoxTexture_btn_hover")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_btn_pressed")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_focus")
+text = "Развернуть"
+
+[node name="BodyPanel" type="PanelContainer" parent="MainVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_panel")
+
+[node name="BodyVBox" type="VBoxContainer" parent="MainVBox/BodyPanel"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="StatsPanel" type="PanelContainer" parent="MainVBox/BodyPanel/BodyVBox"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_stats")
+
+[node name="StatsVBox" type="VBoxContainer" parent="MainVBox/BodyPanel/BodyVBox/StatsPanel"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="ResRow" type="HBoxContainer" parent="MainVBox/BodyPanel/BodyVBox/StatsPanel/StatsVBox"]
+layout_mode = 2
+alignment = 1
+theme_override_constants/separation = 8
+
+[node name="LevelLabel" type="Label" parent="MainVBox/BodyPanel/BodyVBox/StatsPanel/StatsVBox/ResRow"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.843137, 0, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 22
+text = "Ур. 1"
+
+[node name="GoldLabel" type="Label" parent="MainVBox/BodyPanel/BodyVBox/StatsPanel/StatsVBox/ResRow"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 22
+text = "0 Зол."
+
+[node name="XpLabel" type="Label" parent="MainVBox/BodyPanel/BodyVBox/StatsPanel/StatsVBox/ResRow"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.564706, 0.933333, 0.564706, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 22
+text = "XP: 0%"
+
+[node name="StatusLabel" type="Label" parent="MainVBox/BodyPanel/BodyVBox/StatsPanel/StatsVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.960784, 0.870588, 0.701961, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 22
+text = "Волна 1 • 0/20 • Эфф. 0"
+horizontal_alignment = 1
+
+[node name="HpContainer" type="VBoxContainer" parent="MainVBox/BodyPanel/BodyVBox/StatsPanel/StatsVBox"]
+layout_mode = 2
+
+[node name="HpLabel" type="Label" parent="MainVBox/BodyPanel/BodyVBox/StatsPanel/StatsVBox/HpContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.64, 0.64, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 22
+text = "Нет цели"
+horizontal_alignment = 1
+
+[node name="HpBar" type="ProgressBar" parent="MainVBox/BodyPanel/BodyVBox/StatsPanel/StatsVBox/HpContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_hp_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_hp_fill")
+show_percentage = false
+
+[node name="SummonContainer" type="VBoxContainer" parent="MainVBox/BodyPanel/BodyVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="SummonButton" type="Button" parent="MainVBox/BodyPanel/BodyVBox/SummonContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(160, 38)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.960784, 0.870588, 0.701961, 1)
+theme_override_colors/font_pressed_color = Color(0.960784, 0.870588, 0.701961, 1)
+theme_override_colors/font_hover_color = Color(1, 0.95, 0.85, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxTexture_btn_normal")
+theme_override_styles/hover = SubResource("StyleBoxTexture_btn_hover")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_btn_pressed")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_focus")
+text = "ПРИЗВАТЬ (Пробел)"
+
+[node name="SummonProgress" type="ProgressBar" parent="MainVBox/BodyPanel/BodyVBox/SummonContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(160, 6)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/fill = SubResource("StyleBoxFlat_summon_fill")
+show_percentage = false
+
+[node name="QuickRow" type="GridContainer" parent="MainVBox/BodyPanel/BodyVBox"]
+layout_mode = 2
+theme_override_constants/h_separation = 4
+theme_override_constants/v_separation = 4
+columns = 3
+
+[node name="ShopBtn" type="Button" parent="MainVBox/BodyPanel/BodyVBox/QuickRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxTexture_btn_normal")
+theme_override_styles/hover = SubResource("StyleBoxTexture_btn_hover")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_btn_pressed")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_focus")
+text = "Магазин"
+
+[node name="InventoryBtn" type="Button" parent="MainVBox/BodyPanel/BodyVBox/QuickRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxTexture_btn_normal")
+theme_override_styles/hover = SubResource("StyleBoxTexture_btn_hover")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_btn_pressed")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_focus")
+text = "Инв."
+
+[node name="SkillsBtn" type="Button" parent="MainVBox/BodyPanel/BodyVBox/QuickRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxTexture_btn_normal")
+theme_override_styles/hover = SubResource("StyleBoxTexture_btn_hover")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_btn_pressed")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_focus")
+text = "Навыки"
+
+[node name="UpgradesBtn" type="Button" parent="MainVBox/BodyPanel/BodyVBox/QuickRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxTexture_btn_normal")
+theme_override_styles/hover = SubResource("StyleBoxTexture_btn_hover")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_btn_pressed")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_focus")
+text = "Улучш."
+
+[node name="SettingsBtn" type="Button" parent="MainVBox/BodyPanel/BodyVBox/QuickRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxTexture_btn_normal")
+theme_override_styles/hover = SubResource("StyleBoxTexture_btn_hover")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_btn_pressed")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_focus")
+text = "Настройки"
+
+[node name="PauseBtn" type="Button" parent="MainVBox/BodyPanel/BodyVBox/QuickRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxTexture_btn_normal")
+theme_override_styles/hover = SubResource("StyleBoxTexture_btn_hover")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_btn_pressed")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_focus")
+text = "Пауза"

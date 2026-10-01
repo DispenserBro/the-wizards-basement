@@ -1,0 +1,106 @@
+[gd_scene format=3 uid="uid://cy5mh1h1rwxcm"]
+
+[ext_resource type="Texture2D" path="res://src/entities/NPC/npc.png" id="1_540ul"]
+[ext_resource type="Script" path="res://src/entities/Conversation/Conversation.gd" id="1_k27ad"]
+[ext_resource type="FontFile" uid="uid://pahs7t74nq23" path="res://font/m5x7.ttf" id="2_nqrd4"]
+[ext_resource type="FontFile" uid="uid://bacn3veci3ox7" path="res://fonts/ithaca-font/Ithaca-LVB75.ttf" id="3_22rf5"]
+
+[node name="conversation" type="Control" unique_id=380856038]
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("1_k27ad")
+
+[node name="board" type="ColorRect" parent="." unique_id=1827739158]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -964.0
+offset_top = -270.0
+offset_right = 964.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.552941)
+
+[node name="frame" type="ColorRect" parent="board" unique_id=1547324278]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 40.0
+offset_top = -110.0
+offset_right = 264.0
+offset_bottom = 110.0
+grow_vertical = 2
+color = Color(0.701961, 0.196078, 0, 0.576471)
+
+[node name="TextureRect" type="TextureRect" parent="board/frame" unique_id=268866300]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -97.0
+offset_top = -102.0
+offset_right = 97.0
+offset_bottom = 102.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_540ul")
+
+[node name="name" type="Label" parent="board" unique_id=1247863055]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 292.0
+offset_top = -131.0
+offset_right = 852.0
+offset_bottom = 24.0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_22rf5")
+theme_override_font_sizes/font_size = 96
+text = "name
+"
+vertical_alignment = 1
+
+[node name="word" type="Label" parent="board" unique_id=1483350594]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 292.0
+offset_top = -19.0
+offset_right = 457.0
+offset_bottom = 60.0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_nqrd4")
+theme_override_font_sizes/font_size = 66
+text = "talking..."
+
+[node name="dots" type="Label" parent="board" unique_id=570492127]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 1762.0
+offset_top = -40.0
+offset_right = 1918.0
+offset_bottom = 123.0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_nqrd4")
+theme_override_font_sizes/font_size = 201
+text = "..."
+horizontal_alignment = 1
+vertical_alignment = 1
