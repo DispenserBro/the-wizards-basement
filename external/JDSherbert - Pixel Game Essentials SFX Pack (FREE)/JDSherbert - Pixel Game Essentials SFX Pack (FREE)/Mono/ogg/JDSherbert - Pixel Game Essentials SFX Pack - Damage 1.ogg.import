@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://d3yq47wio8pai"
+path="res://.godot/imported/JDSherbert - Pixel Game Essentials SFX Pack - Damage 1.ogg-61b01471767ce6d130472aefd9e78718.oggvorbisstr"
+
+[deps]
+
+source_file="res://external/JDSherbert - Pixel Game Essentials SFX Pack (FREE)/JDSherbert - Pixel Game Essentials SFX Pack (FREE)/Mono/ogg/JDSherbert - Pixel Game Essentials SFX Pack - Damage 1.ogg"
+dest_files=["res://.godot/imported/JDSherbert - Pixel Game Essentials SFX Pack - Damage 1.ogg-61b01471767ce6d130472aefd9e78718.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

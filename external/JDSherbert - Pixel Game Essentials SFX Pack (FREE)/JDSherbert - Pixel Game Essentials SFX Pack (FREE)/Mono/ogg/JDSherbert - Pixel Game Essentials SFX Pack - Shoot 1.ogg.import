@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bf3wo0nxy3pou"
+path="res://.godot/imported/JDSherbert - Pixel Game Essentials SFX Pack - Shoot 1.ogg-142aa8f1b5adfd265aeb8d6b327145fb.oggvorbisstr"
+
+[deps]
+
+source_file="res://external/JDSherbert - Pixel Game Essentials SFX Pack (FREE)/JDSherbert - Pixel Game Essentials SFX Pack (FREE)/Mono/ogg/JDSherbert - Pixel Game Essentials SFX Pack - Shoot 1.ogg"
+dest_files=["res://.godot/imported/JDSherbert - Pixel Game Essentials SFX Pack - Shoot 1.ogg-142aa8f1b5adfd265aeb8d6b327145fb.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

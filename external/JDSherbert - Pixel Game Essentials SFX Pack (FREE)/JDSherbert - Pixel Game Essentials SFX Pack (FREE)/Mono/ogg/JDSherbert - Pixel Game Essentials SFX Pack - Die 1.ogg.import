@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bvodx6rhomd7b"
+path="res://.godot/imported/JDSherbert - Pixel Game Essentials SFX Pack - Die 1.ogg-d1d1a6b148623c2bcd539cfcda1f2ed2.oggvorbisstr"
+
+[deps]
+
+source_file="res://external/JDSherbert - Pixel Game Essentials SFX Pack (FREE)/JDSherbert - Pixel Game Essentials SFX Pack (FREE)/Mono/ogg/JDSherbert - Pixel Game Essentials SFX Pack - Die 1.ogg"
+dest_files=["res://.godot/imported/JDSherbert - Pixel Game Essentials SFX Pack - Die 1.ogg-d1d1a6b148623c2bcd539cfcda1f2ed2.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
